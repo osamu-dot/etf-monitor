@@ -2,17 +2,18 @@ name: Daily ETF Snapshot
 
 on:
   schedule:
-    # 毎朝 22:05 UTC = 翌朝 7:05 JST（月〜金）
     - cron: '5 22 * * 1-5'
-  workflow_dispatch:   # 手動実行ボタンも有効
+  workflow_dispatch:
 
 permissions:
-  contents: write      # docs/data/latest.json をコミットするために必要
+  contents: write
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout
@@ -28,24 +29,17 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run snapshot
-        run: |
-          python snapshot.py --json > docs/data/latest.json
-        # YOUTUBE_API_KEY は GitHub Secrets で設定（任意）
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python snapshot.py --json > docs/data/latest.json
 
-      # タイムスタンプ付きの履歴ファイルも保存
       - name: Save history snapshot
         run: |
           DATE=$(date -u +"%Y%m%d")
           cp docs/data/latest.json docs/data/snapshot_${DATE}.json
 
-      # 変更があればコミット・プッシュ
       - name: Commit and push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/
-          # 変更がなければスキップ
           git diff --cached --quiet || git commit -m "chore: daily snapshot $(date -u +%Y-%m-%d)"
           git push
