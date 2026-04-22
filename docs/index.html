@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mashup Reporter — 米政界シグナル × テーマETF</title>
+<meta name="description" content="米政界の動向をモニターし、個人投資家にとってのシグナルに翻訳する。テーマ別ETFの日次シグナルダッシュボード。">
+<meta property="og:title" content="Mashup Reporter — 米政界シグナル × テーマETF">
+<meta property="og:description" content="防衛・AI・クリーンエネルギーなど10テーマ35本のETFシグナルを毎朝更新。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:       #0b0c0e;
+  --bg2:      #111318;
+  --bg3:      #181b22;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.13);
+  --text:     #e8e9ec;
+  --text2:    #8b8fa8;
+  --text3:    #50546a;
+  --green:    #4ade80;
+  --green-bg: rgba(74,222,128,0.1);
+  --red:      #f87171;
+  --red-bg:   rgba(248,113,113,0.1);
+  --amber:    #fbbf24;
+  --amber-bg: rgba(251,191,36,0.09);
+  --blue:     #60a5fa;
+  --blue-bg:  rgba(96,165,250,0.1);
+  --accent:   #6366f1;
+  --radius:   8px;
+  --radius-lg:12px;
+  --mono:     'DM Mono', 'Courier New', monospace;
+  --sans:     'Syne', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Layout ─────────────────── */
+.page { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+/* ── Header ─────────────────── */
+.site-header {
+  border-bottom: 0.5px solid var(--border);
+  padding: 1.5rem 0 1.25rem;
+  margin-bottom: 2rem;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.75rem;
+}
+.logo {
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text);
+}
+.logo span { color: var(--accent); }
+.tagline { font-size: 11px; color: var(--text3); margin-top: 4px; letter-spacing: 0.04em; }
+.header-meta { text-align: right; }
+.update-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--text2);
+  border: 0.5px solid var(--border2); border-radius: 20px;
+  padding: 4px 10px;
+}
+.pulse {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Summary strip ──────────── */
+.summary-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  margin-bottom: 1.75rem;
+}
+.sum-card {
+  background: var(--bg2); border: 0.5px solid var(--border);
+  border-radius: var(--radius); padding: 0.875rem 1rem;
+}
+.sum-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; font-family: var(--sans); }
+.sum-val { font-size: 22px; font-weight: 600; font-family: var(--sans); }
+.sum-val.green { color: var(--green); }
+.sum-val.red   { color: var(--red); }
+.sum-val.amber { color: var(--amber); }
+.sum-val.blue  { color: var(--blue); }
+
+/* ── Filter row ─────────────── */
+.filter-row {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: center;
+}
+.filter-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-right: 4px; font-family: var(--sans); }
+.filter-btn {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  padding: 4px 12px; border-radius: 20px; cursor: pointer;
+  border: 0.5px solid var(--border2); background: transparent; color: var(--text2);
+  letter-spacing: 0.04em; transition: all 0.15s;
+}
+.filter-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+.filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Sort controls */
+.sort-row {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap;
+}
+.sort-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; font-family: var(--sans); }
+.sort-btn {
+  font-family: var(--mono); font-size: 10px; padding: 3px 8px;
+  border-radius: 4px; cursor: pointer;
+  border: 0.5px solid var(--border); background: transparent; color: var(--text3);
+  transition: all 0.15s;
+}
+.sort-btn:hover { color: var(--text2); border-color: var(--border2); }
+.sort-btn.active { color: var(--amber); border-color: var(--amber); }
+
+/* ── Theme list ─────────────── */
+.theme-list { display: flex; flex-direction: column; gap: 3px; }
+
+.theme-block {
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.theme-block:hover { border-color: var(--border2); }
+.theme-block.open { border-color: rgba(99,102,241,0.35); }
+
+.theme-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto 80px;
+  align-items: center; gap: 12px;
+  padding: 11px 16px; cursor: pointer;
+  background: var(--bg2);
+  user-select: none;
+  transition: background 0.1s;
+}
+.theme-row:hover { background: var(--bg3); }
+
+.theme-key {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text3); font-family: var(--sans);
+}
+.theme-name { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--text); }
+.theme-triggers {
+  font-size: 10px; color: var(--text3); margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 320px;
+}
+.theme-avg-5d { font-size: 13px; text-align: right; }
+.theme-count { font-size: 10px; color: var(--text3); text-align: right; }
+.sig-badge {
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.sig-bull { background: var(--green-bg); color: var(--green); }
+.sig-bear { background: var(--red-bg);   color: var(--red); }
+.sig-neu  { background: var(--amber-bg); color: var(--amber); }
+.chevron {
+  font-size: 9px; color: var(--text3); transition: transform 0.2s;
+  display: flex; align-items: center;
+}
+.theme-block.open .chevron { transform: rotate(90deg); }
+
+/* ── ETF table ──────────────── */
+.etf-panel { display: none; background: var(--bg); border-top: 0.5px solid var(--border); }
+.theme-block.open .etf-panel { display: block; }
+
+.etf-table { width: 100%; border-collapse: collapse; }
+.etf-table thead tr { border-bottom: 0.5px solid var(--border); }
+.etf-table th {
+  font-family: var(--sans); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.07em; color: var(--text3);
+  padding: 8px 14px; text-align: right; white-space: nowrap;
+}
+.etf-table th:first-child { text-align: left; }
+.etf-table td {
+  padding: 9px 14px; text-align: right; font-size: 12px; color: var(--text);
+  border-bottom: 0.5px solid var(--border); white-space: nowrap;
+}
+.etf-table td:first-child { text-align: left; }
+.etf-table tr:last-child td { border-bottom: none; }
+.etf-table tr:hover td { background: var(--bg2); }
+
+.ticker { font-weight: 500; font-size: 12px; letter-spacing: 0.05em; }
+.price-val { color: var(--text2); }
+.pos { color: var(--green); }
+.neg { color: var(--red); }
+.neu { color: var(--text3); }
+
+.bar-cell { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.mini-bar-bg {
+  width: 44px; height: 3px; border-radius: 2px;
+  background: rgba(255,255,255,0.07); overflow: hidden; flex-shrink: 0;
+}
+.mini-bar-fill { height: 100%; border-radius: 2px; }
+.bar-pos { background: var(--green); }
+.bar-neg { background: var(--red); }
+
+.vol-hi { color: var(--blue); font-weight: 500; }
+
+.spark { display: inline-flex; align-items: flex-end; gap: 1.5px; height: 16px; }
+.spark-b { width: 3px; border-radius: 1px; }
+
+.etf-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; }
+.dot-bull { background: var(--green); }
+.dot-bear { background: var(--red); }
+.dot-neu  { background: var(--amber); }
+
+/* ── Heatmap ─────────────────── */
+.section-header {
+  font-family: var(--sans); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3);
+  margin: 2rem 0 0.75rem; display: flex; align-items: center; gap: 8px;
+}
+.section-header::after {
+  content: ''; flex: 1; height: 0.5px; background: var(--border);
+}
+.heatmap {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;
+  margin-bottom: 1rem;
+}
+@media (min-width: 640px) {
+  .heatmap { grid-template-columns: repeat(10, 1fr); }
+}
+.hm-cell {
+  padding: 8px 6px; border-radius: var(--radius); text-align: center; cursor: pointer;
+  border: 0.5px solid transparent; transition: border-color 0.15s;
+}
+.hm-cell:hover { border-color: rgba(255,255,255,0.15); }
+.hm-key { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.3; }
+.hm-val { font-family: var(--mono); font-size: 11px; margin-top: 3px; font-weight: 500; }
+
+/* ── Footer ─────────────────── */
+.site-footer {
+  border-top: 0.5px solid var(--border); margin-top: 3rem; padding-top: 1.5rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-note { font-size: 11px; color: var(--text3); line-height: 1.7; max-width: 580px; }
+.footer-links { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.footer-links a {
+  font-family: var(--sans); font-size: 11px; color: var(--text3); text-decoration: none;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--text2); }
+
+/* ── Loading / Error ─────────── */
+.state-msg {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 320px; flex-direction: column; gap: 12px;
+  color: var(--text3); font-size: 13px; font-family: var(--sans);
+}
+.loader {
+  width: 20px; height: 20px; border: 2px solid var(--border2);
+  border-top-color: var(--accent); border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Responsive ─────────────── */
+@media (max-width: 768px) {
+  .summary-strip { grid-template-columns: repeat(2, 1fr); }
+  .theme-row { grid-template-columns: 1fr auto auto; }
+  .theme-row .theme-triggers, .theme-row .theme-avg-5d, .theme-row .theme-count { display: none; }
+  .etf-table th:nth-child(n+5), .etf-table td:nth-child(n+5) { display: none; }
+}
+@media (max-width: 480px) {
+  .summary-strip { grid-template-columns: repeat(2, 1fr); }
+  .heatmap { grid-template-columns: repeat(5, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div>
+      <div class="logo">Mashup <span>Reporter</span></div>
+      <div class="tagline">米政界シグナル × テーマETF ／ 毎朝 7:00 JST 更新</div>
+    </div>
+    <div class="header-meta">
+      <div class="update-badge">
+        <span class="pulse"></span>
+        <span id="updateTime">読み込み中…</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading state -->
+  <div id="loadingState" class="state-msg">
+    <div class="loader"></div>
+    <span>データを取得中…</span>
+  </div>
+
+  <!-- Main content (hidden until data loads) -->
+  <div id="mainContent" style="display:none;">
+
+    <!-- Summary strip -->
+    <div class="summary-strip" id="summaryStrip"></div>
+
+    <!-- Filters -->
+    <div class="filter-row">
+      <span class="filter-label">表示</span>
+      <button class="filter-btn active" data-filter="all">すべて</button>
+      <button class="filter-btn" data-filter="bull">強気</button>
+      <button class="filter-btn" data-filter="bear">弱気</button>
+      <button class="filter-btn" data-filter="highvol">出来高急増</button>
+    </div>
+
+    <div class="sort-row">
+      <span class="sort-label">並び替え</span>
+      <button class="sort-btn active" data-sort="default">デフォルト</button>
+      <button class="sort-btn" data-sort="chg5d">5日%</button>
+      <button class="sort-btn" data-sort="chg20d">20日%</button>
+      <button class="sort-btn" data-sort="signal">シグナル</button>
+    </div>
+
+    <!-- Theme list -->
+    <div class="theme-list" id="themeList"></div>
+
+    <!-- Heatmap -->
+    <div class="section-header">5日変化率ヒートマップ</div>
+    <div class="heatmap" id="heatmap"></div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-note">
+      本ダッシュボードは情報提供のみを目的としています。投資判断は自己責任で行ってください。
+      データはyfinanceを通じて取得されます。市場が閉まっている時間帯は前日終値を表示します。
+    </p>
+    <div class="footer-links">
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="data/latest.json" target="_blank" rel="noopener">Raw JSON</a>
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+// ── Config ──────────────────────────────────────────
+const DATA_URL = 'data/latest.json';
+
+// テーマの短縮ラベル（ヒートマップ用）
+const THEME_SHORT = {
+  defense:'DEF', energy_fossil:'OIL', energy_clean:'ENV',
+  ai_semicon:'AI', healthcare:'MED', finance:'FIN',
+  infrastructure:'INF', trade_china:'CHN', agri:'AGR', space:'SPC'
+};
+
+// ── State ───────────────────────────────────────────
+let allThemes = [];
+let currentFilter = 'all';
+let currentSort   = 'default';
+
+// ── Data loading ────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    return json;
+  } catch(e) {
+    document.getElementById('loadingState').innerHTML =
+      `<span style="color:var(--red);">データの読み込みに失敗しました</span>
+       <span style="font-size:11px;color:var(--text3);">${e.message}</span>
+       <button onclick="location.reload()" style="margin-top:8px;font-family:var(--sans);font-size:11px;padding:6px 14px;border:0.5px solid var(--border2);background:transparent;color:var(--text2);border-radius:var(--radius);cursor:pointer;">再読み込み</button>`;
+    return null;
+  }
+}
+
+// ── Signal helpers ───────────────────────────────────
+function sigClass(sig) {
+  if (!sig) return 'neu';
+  if (sig.includes('強気') || sig === 'bull') return 'bull';
+  if (sig.includes('弱気') || sig === 'bear') return 'bear';
+  return 'neu';
+}
+function calcThemeSig(etfs) {
+  let score = 0;
+  for (const e of etfs) {
+    const d1 = e.chg_1d ?? 0, d5 = e.chg_5d ?? 0, vr = e.vol_ratio ?? 1;
+    if (d1 > 1) score++; else if (d1 < -1) score--;
+    if (d5 > 3) score++; else if (d5 < -3) score--;
+    if (vr > 1.5) score += d1 > 0 ? 1 : -1;
+  }
+  const p = score / etfs.length;
+  return p >= 1.2 ? 'bull' : p <= -1.2 ? 'bear' : 'neu';
+}
+function avg5d(etfs) {
+  return etfs.reduce((s, e) => s + (e.chg_5d ?? 0), 0) / etfs.length;
+}
+function fmtPct(v) {
+  if (v == null) return '<span class="neu">—</span>';
+  const cls = v > 0 ? 'pos' : v < 0 ? 'neg' : 'neu';
+  return `<span class="${cls}">${v > 0 ? '+' : ''}${v.toFixed(2)}%</span>`;
+}
+function etfSig(e) {
+  let sc = 0;
+  if ((e.chg_1d ?? 0) > 1) sc++; else if ((e.chg_1d ?? 0) < -1) sc--;
+  if ((e.chg_5d ?? 0) > 3) sc++; else if ((e.chg_5d ?? 0) < -3) sc--;
+  const vr = e.vol_ratio ?? 1;
+  if (vr > 1.5) sc += (e.chg_1d ?? 0) > 0 ? 1 : -1;
+  return sc >= 2 ? 'bull' : sc <= -2 ? 'bear' : 'neu';
+}
+
+// ── Sparkline ────────────────────────────────────────
+function spark(vals) {
+  const max = Math.max(...vals.map(Math.abs), 0.01);
+  return vals.map(v => {
+    const h = Math.max(2, Math.round(Math.abs(v) / max * 14));
+    const col = v >= 0 ? 'var(--green)' : 'var(--red)';
+    return `<div class="spark-b" style="height:${h}px;background:${col}"></div>`;
+  }).join('');
+}
+
+// ── ETF row ──────────────────────────────────────────
+function etfRow(e) {
+  const sig = etfSig(e);
+  const dotCls = `dot-${sig}`;
+  const pct5 = e.chg_5d ?? 0;
+  const barW = Math.min(Math.abs(pct5) / 10 * 100, 100).toFixed(0);
+  const barCls = pct5 >= 0 ? 'bar-pos' : 'bar-neg';
+  const volCls = (e.vol_ratio ?? 1) >= 2 ? 'vol-hi' : (e.vol_ratio ?? 1) >= 1.5 ? 'pos' : 'neu';
+  const spkVals = [e.chg_1d ?? 0, (e.chg_1d + e.chg_5d) / 2 ?? 0, e.chg_5d ?? 0,
+                   (e.chg_5d + e.chg_20d) / 2 ?? 0, e.chg_20d ?? 0];
+  return `<tr>
+    <td><span class="ticker">${e.ticker}</span></td>
+    <td class="price-val">$${(e.price ?? 0).toFixed(2)}</td>
+    <td>${fmtPct(e.chg_1d)}</td>
+    <td>
+      <div class="bar-cell">
+        <div class="mini-bar-bg"><div class="mini-bar-fill ${barCls}" style="width:${barW}%"></div></div>
+        ${fmtPct(e.chg_5d)}
+      </div>
+    </td>
+    <td>${fmtPct(e.chg_20d)}</td>
+    <td><span class="${volCls}">${(e.vol_ratio ?? 0).toFixed(1)}x</span></td>
+    <td><div class="spark">${spark(spkVals)}</div></td>
+    <td><span class="etf-dot ${dotCls}"></span></td>
+  </tr>`;
+}
+
+// ── Theme block ──────────────────────────────────────
+function buildBlock(key, t) {
+  const sig   = calcThemeSig(t.etfs);
+  const sigLbl= sig === 'bull' ? '強気' : sig === 'bear' ? '弱気' : '中立';
+  const a5    = avg5d(t.etfs);
+  const sign  = a5 > 0 ? '+' : '';
+  const avgCls= a5 > 0 ? 'pos' : a5 < 0 ? 'neg' : 'neu';
+  const short = THEME_SHORT[key] || key.toUpperCase().slice(0,4);
+
+  const div = document.createElement('div');
+  div.className = 'theme-block';
+  div.dataset.sig    = sig;
+  div.dataset.highvol= t.etfs.some(e => (e.vol_ratio ?? 0) >= 1.8) ? '1' : '0';
+  div.dataset.a5     = a5;
+  div.dataset.a20    = t.etfs.reduce((s, e) => s + (e.chg_20d ?? 0), 0) / t.etfs.length;
+
+  const rows = t.etfs.map(etfRow).join('');
+  div.innerHTML = `
+    <div class="theme-row" onclick="this.closest('.theme-block').classList.toggle('open')">
+      <div>
+        <div class="theme-key">${short}</div>
+      </div>
+      <div>
+        <div class="theme-name">${t.label}</div>
+        <div class="theme-triggers">${(t.triggers || []).join(' · ')}</div>
+      </div>
+      <div class="theme-avg-5d ${avgCls}">${sign}${a5.toFixed(1)}%</div>
+      <div class="theme-count">${t.etfs.length} ETF</div>
+      <span class="sig-badge sig-${sig}">${sigLbl}</span>
+      <div class="chevron">&#9658;</div>
+    </div>
+    <div class="etf-panel">
+      <table class="etf-table">
+        <thead><tr>
+          <th>Ticker</th><th>価格</th><th>1日%</th><th>5日%</th>
+          <th>20日%</th><th>出来高比</th><th>推移</th><th></th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+  return div;
+}
+
+// ── Summary strip ─────────────────────────────────────
+function buildSummary(themes) {
+  const list = Object.values(themes);
+  const bull = list.filter(t => calcThemeSig(t.etfs) === 'bull').length;
+  const bear = list.filter(t => calcThemeSig(t.etfs) === 'bear').length;
+  const hi   = list.filter(t => t.etfs.some(e => (e.vol_ratio ?? 0) >= 1.8)).length;
+  const avgAll= (list.reduce((s, t) => s + avg5d(t.etfs), 0) / list.length).toFixed(1);
+  const avgSign = avgAll > 0 ? '+' : '';
+  const avgCls  = avgAll > 0 ? 'green' : avgAll < 0 ? 'red' : 'amber';
+
+  return `
+    <div class="sum-card"><div class="sum-label">テーマ数</div><div class="sum-val blue">${list.length}</div></div>
+    <div class="sum-card"><div class="sum-label">強気テーマ</div><div class="sum-val green">${bull}</div></div>
+    <div class="sum-card"><div class="sum-label">弱気テーマ</div><div class="sum-val red">${bear}</div></div>
+    <div class="sum-card"><div class="sum-label">全体 5日平均</div><div class="sum-val ${avgCls}">${avgSign}${avgAll}%</div></div>
+  `;
+}
+
+// ── Heatmap ───────────────────────────────────────────
+function buildHeatmap(themes) {
+  const hm = document.getElementById('heatmap');
+  hm.innerHTML = '';
+  Object.entries(themes).forEach(([key, t]) => {
+    const a = avg5d(t.etfs);
+    const intensity = Math.min(Math.abs(a) / 8, 1);
+    let bg, textCol;
+    if (a > 0.5) {
+      bg = `rgba(74,222,128,${0.08 + intensity * 0.28})`;
+      textCol = 'var(--green)';
+    } else if (a < -0.5) {
+      bg = `rgba(248,113,113,${0.08 + intensity * 0.28})`;
+      textCol = 'var(--red)';
+    } else {
+      bg = 'var(--bg2)';
+      textCol = 'var(--text3)';
+    }
+    const sign = a > 0 ? '+' : '';
+    const cell = document.createElement('div');
+    cell.className = 'hm-cell';
+    cell.style.background = bg;
+    cell.title = t.label;
+    cell.innerHTML = `
+      <div class="hm-key" style="color:${textCol};">${THEME_SHORT[key] || key.slice(0,4)}</div>
+      <div class="hm-val" style="color:${textCol};">${sign}${a.toFixed(1)}%</div>
+    `;
+    cell.addEventListener('click', () => {
+      document.querySelectorAll('.theme-block').forEach(b => {
+        const nm = b.querySelector('.theme-name');
+        if (nm && nm.textContent === t.label) {
+          b.classList.add('open');
+          b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+    hm.appendChild(cell);
+  });
+}
+
+// ── Render list ───────────────────────────────────────
+function renderList(themes) {
+  const list = document.getElementById('themeList');
+  list.innerHTML = '';
+
+  let entries = Object.entries(themes);
+
+  // Filter
+  if (currentFilter === 'bull')    entries = entries.filter(([,t]) => calcThemeSig(t.etfs) === 'bull');
+  if (currentFilter === 'bear')    entries = entries.filter(([,t]) => calcThemeSig(t.etfs) === 'bear');
+  if (currentFilter === 'highvol') entries = entries.filter(([,t]) => t.etfs.some(e => (e.vol_ratio ?? 0) >= 1.8));
+
+  // Sort
+  if (currentSort === 'chg5d')  entries.sort((a,b) => avg5d(b[1].etfs) - avg5d(a[1].etfs));
+  if (currentSort === 'chg20d') entries.sort((a,b) =>
+    b[1].etfs.reduce((s,e)=>s+(e.chg_20d??0),0)/b[1].etfs.length -
+    a[1].etfs.reduce((s,e)=>s+(e.chg_20d??0),0)/a[1].etfs.length);
+  if (currentSort === 'signal') {
+    const order = { bull:0, neu:1, bear:2 };
+    entries.sort((a,b) => order[calcThemeSig(a[1].etfs)] - order[calcThemeSig(b[1].etfs)]);
+  }
+
+  entries.forEach(([key, t]) => list.appendChild(buildBlock(key, t)));
+}
+
+// ── Init ──────────────────────────────────────────────
+async function init() {
+  const data = await loadData();
+  if (!data) return;
+
+  allThemes = data.themes;
+
+  document.getElementById('updateTime').textContent = `更新: ${data.generated_at}`;
+  document.getElementById('summaryStrip').innerHTML = buildSummary(allThemes);
+  renderList(allThemes);
+  buildHeatmap(allThemes);
+
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('mainContent').style.display  = 'block';
+}
+
+// ── Event listeners ───────────────────────────────────
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderList(allThemes);
+  });
+});
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    renderList(allThemes);
+  });
+});
+
+init();
+</script>
+</body>
+</html>
