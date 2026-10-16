@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15 00:19 JST",
+  "generated_at": "2026-10-16 00:08 JST",
   "themes": {
     "defense": {
       "label": "防衛・安全保障",
@@ -9,34 +9,34 @@
         "NATO",
         "武器輸出"
       ],
-      "theme_signal": "🔴 弱気",
+      "theme_signal": "🟡 中立",
       "etfs": [
         {
           "ticker": "ITA",
-          "price": 204.0,
-          "chg_1d": -0.99,
-          "chg_5d": -2.05,
-          "chg_20d": -4.67,
-          "vol_ratio": 0.82,
+          "price": 204.24,
+          "chg_1d": 0.12,
+          "chg_5d": 0.31,
+          "chg_20d": -5.12,
+          "vol_ratio": 0.86,
           "signal": "🟡 中立"
         },
         {
           "ticker": "XAR",
-          "price": 222.88,
-          "chg_1d": -1.2,
-          "chg_5d": -4.6,
-          "chg_20d": -7.67,
-          "vol_ratio": 1.23,
-          "signal": "🔴 弱気"
+          "price": 220.35,
+          "chg_1d": -1.14,
+          "chg_5d": -2.78,
+          "chg_20d": -9.01,
+          "vol_ratio": 1.18,
+          "signal": "🟡 中立"
         },
         {
           "ticker": "DFEN",
-          "price": 44.72,
-          "chg_1d": -3.01,
-          "chg_5d": -6.31,
-          "chg_20d": -14.7,
-          "vol_ratio": 0.94,
-          "signal": "🔴 弱気"
+          "price": 44.78,
+          "chg_1d": 0.13,
+          "chg_5d": 0.63,
+          "chg_20d": -16.03,
+          "vol_ratio": 0.68,
+          "signal": "🟡 中立"
         }
       ]
     },
@@ -47,33 +47,33 @@
         "EPA規制緩和",
         "掘削権"
       ],
-      "theme_signal": "🟢 強気",
+      "theme_signal": "🟡 中立",
       "etfs": [
         {
           "ticker": "XLE",
-          "price": 67.2,
-          "chg_1d": 1.8,
-          "chg_5d": 5.41,
-          "chg_20d": 2.53,
-          "vol_ratio": 0.75,
-          "signal": "🟢 強気"
+          "price": 67.63,
+          "chg_1d": 0.64,
+          "chg_5d": 6.74,
+          "chg_20d": 6.25,
+          "vol_ratio": 0.96,
+          "signal": "🟡 中立"
         },
         {
           "ticker": "XOP",
-          "price": 199.82,
-          "chg_1d": 2.85,
-          "chg_5d": 6.03,
-          "chg_20d": 0.46,
-          "vol_ratio": 1.04,
-          "signal": "🟢 強気"
+          "price": 197.84,
+          "chg_1d": -0.99,
+          "chg_5d": 5.1,
+          "chg_20d": 3.56,
+          "vol_ratio": 0.72,
+          "signal": "🟡 中立"
         },
         {
           "ticker": "OIH",
-          "price": 390.48,
-          "chg_1d": 0.46,
-          "chg_5d": -0.25,
-          "chg_20d": -5.11,
-          "vol_ratio": 1.81,
+          "price": 382.36,
+          "chg_1d": -2.08,
+          "chg_5d": 0.21,
+          "chg_20d": -4.37,
+          "vol_ratio": 1.45,
           "signal": "🟡 中立"
         }
       ]
@@ -85,34 +85,34 @@
         "太陽光補助金",
         "EV税控除"
       ],
-      "theme_signal": "🟡 中立",
+      "theme_signal": "🔴 弱気",
       "etfs": [
         {
           "ticker": "ICLN",
-          "price": 17.18,
-          "chg_1d": 0.35,
-          "chg_5d": -2.05,
-          "chg_20d": -1.49,
-          "vol_ratio": 0.88,
-          "signal": "🟡 中立"
+          "price": 16.64,
+          "chg_1d": -3.14,
+          "chg_5d": -3.87,
+          "chg_20d": -3.93,
+          "vol_ratio": 0.7,
+          "signal": "🔴 弱気"
         },
         {
           "ticker": "TAN",
-          "price": 44.38,
-          "chg_1d": 2.07,
-          "chg_5d": -0.05,
-          "chg_20d": -1.57,
-          "vol_ratio": 2.12,
-          "signal": "🟢 強気"
+          "price": 42.64,
+          "chg_1d": -3.92,
+          "chg_5d": -2.04,
+          "chg_20d": -4.44,
+          "vol_ratio": 1.68,
+          "signal": "🔴 弱気"
         },
         {
           "ticker": "QCLN",
-          "price": 47.24,
-          "chg_1d": 0.25,
-          "chg_5d": -6.95,
-          "chg_20d": 0.11,
-          "vol_ratio": 0.89,
-          "signal": "🟡 中立"
+          "price": 44.92,
+          "chg_1d": -4.91,
+          "chg_5d": -9.14,
+          "chg_20d": -3.87,
+          "vol_ratio": 2.49,
+          "signal": "🔴 弱気"
         }
       ]
     },
@@ -127,39 +127,39 @@
       "etfs": [
         {
           "ticker": "SOXX",
-          "price": 543.9,
-          "chg_1d": -0.17,
-          "chg_5d": -7.73,
-          "chg_20d": 9.03,
-          "vol_ratio": 1.65,
+          "price": 519.42,
+          "chg_1d": -4.5,
+          "chg_5d": -10.88,
+          "chg_20d": 3.46,
+          "vol_ratio": 2.48,
           "signal": "🔴 弱気"
         },
         {
           "ticker": "SMH",
-          "price": 588.12,
-          "chg_1d": -0.49,
-          "chg_5d": -7.02,
-          "chg_20d": 8.49,
-          "vol_ratio": 1.86,
+          "price": 564.74,
+          "chg_1d": -3.98,
+          "chg_5d": -9.65,
+          "chg_20d": 3.52,
+          "vol_ratio": 2.24,
           "signal": "🔴 弱気"
         },
         {
           "ticker": "AIQ",
-          "price": 65.85,
-          "chg_1d": -0.11,
-          "chg_5d": -1.79,
-          "chg_20d": 4.59,
-          "vol_ratio": 1.28,
-          "signal": "🟡 中立"
+          "price": 63.94,
+          "chg_1d": -2.9,
+          "chg_5d": -4.09,
+          "chg_20d": 1.48,
+          "vol_ratio": 1.29,
+          "signal": "🔴 弱気"
         },
         {
           "ticker": "ROBT",
-          "price": 59.08,
-          "chg_1d": -0.48,
-          "chg_5d": -2.97,
-          "chg_20d": 2.17,
-          "vol_ratio": 1.16,
-          "signal": "🟡 中立"
+          "price": 57.72,
+          "chg_1d": -2.31,
+          "chg_5d": -3.94,
+          "chg_20d": 0.11,
+          "vol_ratio": 5.78,
+          "signal": "🔴 弱気"
         }
       ]
     },
@@ -170,42 +170,42 @@
         "FDA人員",
         "RFK発言"
       ],
-      "theme_signal": "🟡 中立",
+      "theme_signal": "🟢 強気",
       "etfs": [
         {
           "ticker": "XLV",
-          "price": 169.66,
-          "chg_1d": -1.35,
-          "chg_5d": 1.54,
-          "chg_20d": 1.58,
-          "vol_ratio": 1.46,
-          "signal": "🟡 中立"
+          "price": 173.96,
+          "chg_1d": 2.53,
+          "chg_5d": 3.05,
+          "chg_20d": 4.09,
+          "vol_ratio": 1.37,
+          "signal": "🟢 強気"
         },
         {
           "ticker": "IBB",
-          "price": 200.02,
-          "chg_1d": -2.08,
-          "chg_5d": -1.52,
-          "chg_20d": -0.98,
-          "vol_ratio": 0.67,
+          "price": 203.25,
+          "chg_1d": 1.61,
+          "chg_5d": -0.04,
+          "chg_20d": 0.42,
+          "vol_ratio": 1.09,
           "signal": "🟡 中立"
         },
         {
           "ticker": "IHF",
-          "price": 57.19,
-          "chg_1d": 0.03,
-          "chg_5d": 2.31,
-          "chg_20d": 0.23,
-          "vol_ratio": 0.95,
-          "signal": "🟡 中立"
+          "price": 58.37,
+          "chg_1d": 2.06,
+          "chg_5d": 4.31,
+          "chg_20d": 3.0,
+          "vol_ratio": 1.61,
+          "signal": "🟢 強気"
         },
         {
           "ticker": "XBI",
-          "price": 146.8,
-          "chg_1d": -3.04,
-          "chg_5d": -2.72,
-          "chg_20d": -4.69,
-          "vol_ratio": 1.05,
+          "price": 146.77,
+          "chg_1d": -0.02,
+          "chg_5d": -2.3,
+          "chg_20d": -4.81,
+          "vol_ratio": 1.16,
           "signal": "🟡 中立"
         }
       ]
@@ -222,38 +222,38 @@
       "etfs": [
         {
           "ticker": "XLF",
-          "price": 54.82,
-          "chg_1d": -0.42,
-          "chg_5d": 1.5,
-          "chg_20d": -3.23,
-          "vol_ratio": 1.14,
+          "price": 54.52,
+          "chg_1d": -0.55,
+          "chg_5d": 1.43,
+          "chg_20d": -2.18,
+          "vol_ratio": 1.18,
           "signal": "🟡 中立"
         },
         {
           "ticker": "KBE",
-          "price": 62.94,
-          "chg_1d": -0.71,
-          "chg_5d": -1.52,
-          "chg_20d": -6.85,
-          "vol_ratio": 1.55,
+          "price": 62.5,
+          "chg_1d": -0.7,
+          "chg_5d": -0.62,
+          "chg_20d": -5.88,
+          "vol_ratio": 0.86,
           "signal": "🟡 中立"
         },
         {
           "ticker": "KBWB",
-          "price": 86.77,
-          "chg_1d": -1.39,
-          "chg_5d": -0.96,
-          "chg_20d": -7.91,
-          "vol_ratio": 3.1,
-          "signal": "🔴 弱気"
+          "price": 85.49,
+          "chg_1d": -1.48,
+          "chg_5d": -1.27,
+          "chg_20d": -6.58,
+          "vol_ratio": 0.61,
+          "signal": "🟡 中立"
         },
         {
           "ticker": "BITB",
-          "price": 45.16,
-          "chg_1d": 0.56,
-          "chg_5d": -2.82,
-          "chg_20d": 9.29,
-          "vol_ratio": 0.64,
+          "price": 44.31,
+          "chg_1d": -1.88,
+          "chg_5d": -2.1,
+          "chg_20d": 7.44,
+          "vol_ratio": 1.13,
           "signal": "🟡 中立"
         }
       ]
@@ -269,29 +269,29 @@
       "etfs": [
         {
           "ticker": "PAVE",
-          "price": 53.54,
-          "chg_1d": 0.32,
-          "chg_5d": -2.03,
-          "chg_20d": 1.32,
-          "vol_ratio": 1.71,
+          "price": 52.82,
+          "chg_1d": -1.34,
+          "chg_5d": -0.88,
+          "chg_20d": 0.13,
+          "vol_ratio": 1.07,
           "signal": "🟡 中立"
         },
         {
           "ticker": "IGF",
-          "price": 63.48,
-          "chg_1d": 0.6,
-          "chg_5d": 0.89,
-          "chg_20d": 0.57,
-          "vol_ratio": 0.8,
+          "price": 62.99,
+          "chg_1d": -0.77,
+          "chg_5d": 1.42,
+          "chg_20d": 0.0,
+          "vol_ratio": 0.69,
           "signal": "🟡 中立"
         },
         {
           "ticker": "IFRA",
-          "price": 57.24,
-          "chg_1d": 0.25,
-          "chg_5d": -0.61,
-          "chg_20d": 0.88,
-          "vol_ratio": 0.5,
+          "price": 56.67,
+          "chg_1d": -1.0,
+          "chg_5d": -0.04,
+          "chg_20d": 0.02,
+          "vol_ratio": 0.72,
           "signal": "🟡 中立"
         }
       ]
@@ -307,38 +307,38 @@
       "etfs": [
         {
           "ticker": "KWEB",
-          "price": 24.72,
-          "chg_1d": -0.12,
-          "chg_5d": 0.73,
-          "chg_20d": 0.98,
-          "vol_ratio": 0.81,
+          "price": 24.51,
+          "chg_1d": -0.85,
+          "chg_5d": 0.74,
+          "chg_20d": 1.11,
+          "vol_ratio": 0.91,
           "signal": "🟡 中立"
         },
         {
           "ticker": "FXI",
-          "price": 34.17,
-          "chg_1d": 0.09,
-          "chg_5d": 1.18,
-          "chg_20d": -0.67,
-          "vol_ratio": 1.22,
+          "price": 33.86,
+          "chg_1d": -0.91,
+          "chg_5d": 1.32,
+          "chg_20d": -0.18,
+          "vol_ratio": 1.19,
           "signal": "🟡 中立"
         },
         {
           "ticker": "CQQQ",
-          "price": 43.09,
-          "chg_1d": 0.26,
-          "chg_5d": -4.31,
-          "chg_20d": -6.55,
-          "vol_ratio": 6.73,
-          "signal": "🟡 中立"
+          "price": 42.0,
+          "chg_1d": -2.53,
+          "chg_5d": -5.49,
+          "chg_20d": -9.05,
+          "vol_ratio": 4.41,
+          "signal": "🔴 弱気"
         },
         {
           "ticker": "EWJ",
-          "price": 97.32,
-          "chg_1d": 0.0,
-          "chg_5d": -2.01,
-          "chg_20d": 0.41,
-          "vol_ratio": 1.45,
+          "price": 95.84,
+          "chg_1d": -1.52,
+          "chg_5d": -2.52,
+          "chg_20d": -1.21,
+          "vol_ratio": 0.88,
           "signal": "🟡 中立"
         }
       ]
@@ -354,20 +354,20 @@
       "etfs": [
         {
           "ticker": "MOO",
-          "price": 81.97,
-          "chg_1d": 1.41,
-          "chg_5d": -0.52,
-          "chg_20d": -5.25,
-          "vol_ratio": 0.92,
+          "price": 82.18,
+          "chg_1d": 0.26,
+          "chg_5d": 1.17,
+          "chg_20d": -3.65,
+          "vol_ratio": 0.7,
           "signal": "🟡 中立"
         },
         {
           "ticker": "DBA",
-          "price": 28.43,
-          "chg_1d": -0.04,
-          "chg_5d": -1.46,
-          "chg_20d": -1.56,
-          "vol_ratio": 0.35,
+          "price": 28.26,
+          "chg_1d": -0.6,
+          "chg_5d": -0.81,
+          "chg_20d": -1.94,
+          "vol_ratio": 0.41,
           "signal": "🟡 中立"
         },
         {
@@ -392,29 +392,29 @@
       "etfs": [
         {
           "ticker": "UFO",
-          "price": 40.74,
-          "chg_1d": -1.85,
-          "chg_5d": -8.1,
-          "chg_20d": -5.0,
-          "vol_ratio": 0.93,
+          "price": 39.73,
+          "chg_1d": -2.48,
+          "chg_5d": -7.69,
+          "chg_20d": -7.51,
+          "vol_ratio": 1.85,
           "signal": "🔴 弱気"
         },
         {
           "ticker": "ARKX",
-          "price": 31.44,
-          "chg_1d": -1.01,
-          "chg_5d": -5.39,
-          "chg_20d": -0.22,
-          "vol_ratio": 0.93,
+          "price": 30.52,
+          "chg_1d": -2.91,
+          "chg_5d": -6.42,
+          "chg_20d": -3.34,
+          "vol_ratio": 1.36,
           "signal": "🔴 弱気"
         },
         {
           "ticker": "WCLD",
-          "price": 43.07,
-          "chg_1d": -0.32,
-          "chg_5d": 2.35,
-          "chg_20d": 4.62,
-          "vol_ratio": 1.89,
+          "price": 42.08,
+          "chg_1d": -2.29,
+          "chg_5d": 0.42,
+          "chg_20d": 3.0,
+          "vol_ratio": 0.99,
           "signal": "🟡 中立"
         }
       ]
