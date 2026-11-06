@@ -1,0 +1,423 @@
+{
+  "generated_at": "2026-11-06 02:03 JST",
+  "themes": {
+    "defense": {
+      "label": "防衛・安全保障",
+      "triggers": [
+        "NDAA",
+        "国防予算",
+        "NATO",
+        "武器輸出"
+      ],
+      "theme_signal": "🟡 中立",
+      "etfs": [
+        {
+          "ticker": "ITA",
+          "price": 212.84,
+          "chg_1d": -1.54,
+          "chg_5d": 2.45,
+          "chg_20d": 4.54,
+          "vol_ratio": 3.17,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "XAR",
+          "price": 225.53,
+          "chg_1d": -3.65,
+          "chg_5d": 0.24,
+          "chg_20d": -0.49,
+          "vol_ratio": 1.21,
+          "signal": "🟡 中立"
+        },
+        {
+          "ticker": "DFEN",
+          "price": 49.82,
+          "chg_1d": -5.03,
+          "chg_5d": 6.5,
+          "chg_20d": 11.96,
+          "vol_ratio": 1.24,
+          "signal": "🟡 中立"
+        }
+      ]
+    },
+    "energy_fossil": {
+      "label": "化石燃料エネルギー",
+      "triggers": [
+        "LNG輸出許可",
+        "EPA規制緩和",
+        "掘削権"
+      ],
+      "theme_signal": "🔴 弱気",
+      "etfs": [
+        {
+          "ticker": "XLE",
+          "price": 63.52,
+          "chg_1d": -4.74,
+          "chg_5d": -7.2,
+          "chg_20d": 0.25,
+          "vol_ratio": 1.94,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "XOP",
+          "price": 179.29,
+          "chg_1d": -6.39,
+          "chg_5d": -10.52,
+          "chg_20d": -4.75,
+          "vol_ratio": 1.4,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "OIH",
+          "price": 366.06,
+          "chg_1d": -4.95,
+          "chg_5d": -10.52,
+          "chg_20d": -4.06,
+          "vol_ratio": 1.63,
+          "signal": "🔴 弱気"
+        }
+      ]
+    },
+    "energy_clean": {
+      "label": "クリーンエネルギー",
+      "triggers": [
+        "IRA予算",
+        "太陽光補助金",
+        "EV税控除"
+      ],
+      "theme_signal": "🟢 強気",
+      "etfs": [
+        {
+          "ticker": "ICLN",
+          "price": 16.6,
+          "chg_1d": 3.04,
+          "chg_5d": 5.4,
+          "chg_20d": -4.1,
+          "vol_ratio": 1.97,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "TAN",
+          "price": 45.79,
+          "chg_1d": 5.65,
+          "chg_5d": 11.74,
+          "chg_20d": 5.19,
+          "vol_ratio": 2.72,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "QCLN",
+          "price": 45.17,
+          "chg_1d": -0.59,
+          "chg_5d": 0.22,
+          "chg_20d": -8.64,
+          "vol_ratio": 1.87,
+          "signal": "🟡 中立"
+        }
+      ]
+    },
+    "ai_semicon": {
+      "label": "AI・半導体",
+      "triggers": [
+        "CHIPS法",
+        "輸出規制(BIS)",
+        "中国デカップリング"
+      ],
+      "theme_signal": "🟡 中立",
+      "etfs": [
+        {
+          "ticker": "SOXX",
+          "price": 450.41,
+          "chg_1d": -3.14,
+          "chg_5d": 158.89,
+          "chg_20d": 131.84,
+          "vol_ratio": 2.3,
+          "signal": "🟡 中立"
+        },
+        {
+          "ticker": "SMH",
+          "price": 504.27,
+          "chg_1d": -2.75,
+          "chg_5d": -11.17,
+          "chg_20d": -19.32,
+          "vol_ratio": 2.84,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "AIQ",
+          "price": 59.87,
+          "chg_1d": 0.55,
+          "chg_5d": -7.03,
+          "chg_20d": -10.2,
+          "vol_ratio": 4.03,
+          "signal": "🟡 中立"
+        },
+        {
+          "ticker": "ROBT",
+          "price": 55.51,
+          "chg_1d": 0.78,
+          "chg_5d": -6.15,
+          "chg_20d": -7.6,
+          "vol_ratio": 4.32,
+          "signal": "🟡 中立"
+        }
+      ]
+    },
+    "healthcare": {
+      "label": "医療・薬価",
+      "triggers": [
+        "Medicare交渉薬",
+        "FDA人員",
+        "RFK発言"
+      ],
+      "theme_signal": "🟢 強気",
+      "etfs": [
+        {
+          "ticker": "XLV",
+          "price": 189.66,
+          "chg_1d": 3.06,
+          "chg_5d": 5.53,
+          "chg_20d": 12.35,
+          "vol_ratio": 2.38,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "IBB",
+          "price": 221.13,
+          "chg_1d": 2.63,
+          "chg_5d": 2.21,
+          "chg_20d": 8.75,
+          "vol_ratio": 1.98,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "IHF",
+          "price": 60.56,
+          "chg_1d": 1.94,
+          "chg_5d": 1.76,
+          "chg_20d": 8.22,
+          "vol_ratio": 3.82,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "XBI",
+          "price": 159.1,
+          "chg_1d": 2.67,
+          "chg_5d": 1.01,
+          "chg_20d": 5.9,
+          "vol_ratio": 1.44,
+          "signal": "🟡 中立"
+        }
+      ]
+    },
+    "finance": {
+      "label": "金融・規制",
+      "triggers": [
+        "SEC方針",
+        "CFPB",
+        "暗号資産規制",
+        "銀行M&A"
+      ],
+      "theme_signal": "🟢 強気",
+      "etfs": [
+        {
+          "ticker": "XLF",
+          "price": 59.2,
+          "chg_1d": 3.51,
+          "chg_5d": 5.47,
+          "chg_20d": 10.14,
+          "vol_ratio": 2.07,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "KBE",
+          "price": 67.83,
+          "chg_1d": 1.86,
+          "chg_5d": 3.34,
+          "chg_20d": 7.85,
+          "vol_ratio": 1.92,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "KBWB",
+          "price": 91.26,
+          "chg_1d": 2.41,
+          "chg_5d": 2.36,
+          "chg_20d": 5.39,
+          "vol_ratio": 1.17,
+          "signal": "🟡 中立"
+        },
+        {
+          "ticker": "BITB",
+          "price": 43.42,
+          "chg_1d": 2.84,
+          "chg_5d": -1.83,
+          "chg_20d": -4.07,
+          "vol_ratio": 1.83,
+          "signal": "🟢 強気"
+        }
+      ]
+    },
+    "infrastructure": {
+      "label": "インフラ・建設",
+      "triggers": [
+        "IIJA執行",
+        "政府契約(USAspending)",
+        "予算継続決議"
+      ],
+      "theme_signal": "🔴 弱気",
+      "etfs": [
+        {
+          "ticker": "PAVE",
+          "price": 53.91,
+          "chg_1d": -1.68,
+          "chg_5d": 1.07,
+          "chg_20d": 1.16,
+          "vol_ratio": 2.5,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "IGF",
+          "price": 66.31,
+          "chg_1d": 1.02,
+          "chg_5d": 2.43,
+          "chg_20d": 6.76,
+          "vol_ratio": 1.25,
+          "signal": "🟡 中立"
+        },
+        {
+          "ticker": "IFRA",
+          "price": 57.96,
+          "chg_1d": -1.14,
+          "chg_5d": 0.5,
+          "chg_20d": 2.24,
+          "vol_ratio": 2.04,
+          "signal": "🔴 弱気"
+        }
+      ]
+    },
+    "trade_china": {
+      "label": "貿易・関税・中国",
+      "triggers": [
+        "追加関税",
+        "台湾情勢",
+        "デリスキング"
+      ],
+      "theme_signal": "🟢 強気",
+      "etfs": [
+        {
+          "ticker": "KWEB",
+          "price": 24.32,
+          "chg_1d": 4.47,
+          "chg_5d": 5.79,
+          "chg_20d": -0.04,
+          "vol_ratio": 4.32,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "FXI",
+          "price": 34.59,
+          "chg_1d": 4.22,
+          "chg_5d": 6.56,
+          "chg_20d": 3.5,
+          "vol_ratio": 1.9,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "CQQQ",
+          "price": 40.36,
+          "chg_1d": 6.77,
+          "chg_5d": 1.43,
+          "chg_20d": -9.18,
+          "vol_ratio": 2.85,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "EWJ",
+          "price": 93.86,
+          "chg_1d": 1.37,
+          "chg_5d": -1.19,
+          "chg_20d": -4.54,
+          "vol_ratio": 2.63,
+          "signal": "🟢 強気"
+        }
+      ]
+    },
+    "agri": {
+      "label": "農業・食料安全保障",
+      "triggers": [
+        "Farm Bill",
+        "穀物輸出規制",
+        "肥料関税"
+      ],
+      "theme_signal": "🟡 中立",
+      "etfs": [
+        {
+          "ticker": "MOO",
+          "price": 83.71,
+          "chg_1d": 2.41,
+          "chg_5d": 4.3,
+          "chg_20d": 3.05,
+          "vol_ratio": 1.14,
+          "signal": "🟢 強気"
+        },
+        {
+          "ticker": "DBA",
+          "price": 26.45,
+          "chg_1d": -0.26,
+          "chg_5d": -2.43,
+          "chg_20d": -7.16,
+          "vol_ratio": 1.6,
+          "signal": "🟡 中立"
+        },
+        {
+          "ticker": "SOIL",
+          "price": null,
+          "chg_1d": null,
+          "chg_5d": null,
+          "chg_20d": null,
+          "vol_ratio": null,
+          "signal": "⚠️ データ不足"
+        }
+      ]
+    },
+    "space": {
+      "label": "宇宙・次世代通信",
+      "triggers": [
+        "NASA予算",
+        "Space Force",
+        "FCC周波数"
+      ],
+      "theme_signal": "🔴 弱気",
+      "etfs": [
+        {
+          "ticker": "UFO",
+          "price": 39.41,
+          "chg_1d": -2.86,
+          "chg_5d": -4.53,
+          "chg_20d": -8.43,
+          "vol_ratio": 2.36,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "ARKX",
+          "price": 28.92,
+          "chg_1d": -3.31,
+          "chg_5d": -6.1,
+          "chg_20d": -11.34,
+          "vol_ratio": 2.8,
+          "signal": "🔴 弱気"
+        },
+        {
+          "ticker": "WCLD",
+          "price": 43.43,
+          "chg_1d": 1.38,
+          "chg_5d": -6.18,
+          "chg_20d": 3.63,
+          "vol_ratio": 1.07,
+          "signal": "🟡 中立"
+        }
+      ]
+    }
+  }
+}
