@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26 04:00 JST",
+  "generated_at": "2026-11-27 03:58 JST",
   "themes": {
     "defense": {
       "label": "防衛・安全保障",
@@ -89,12 +89,12 @@
       "etfs": [
         {
           "ticker": "ICLN",
-          "price": null,
-          "chg_1d": null,
-          "chg_5d": null,
-          "chg_20d": null,
-          "vol_ratio": null,
-          "signal": "⚠️ データ不足"
+          "price": 14.2,
+          "chg_1d": 1.0,
+          "chg_5d": -3.53,
+          "chg_20d": -9.84,
+          "vol_ratio": 0.71,
+          "signal": "🟡 中立"
         },
         {
           "ticker": "TAN",
@@ -131,7 +131,7 @@
           "chg_1d": -0.5,
           "chg_5d": -9.78,
           "chg_20d": -26.44,
-          "vol_ratio": 1.02,
+          "vol_ratio": 1.03,
           "signal": "🟡 中立"
         },
         {
@@ -253,7 +253,7 @@
           "chg_1d": 0.83,
           "chg_5d": -3.74,
           "chg_20d": -26.18,
-          "vol_ratio": 1.89,
+          "vol_ratio": 1.91,
           "signal": "🟡 中立"
         }
       ]
